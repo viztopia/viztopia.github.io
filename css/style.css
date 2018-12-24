@@ -394,7 +394,24 @@ a:hover, a:active, a:focus {
   padding-left: 14px;
 }
 
+#single-project h2 {
+  text-align: left;
+}
 
+#single-project .paragraph-text {
+  text-align: left;
+  padding-left: 50px;
+}
+
+#single-project .bullet-item {
+  text-align: left;
+  color: #777;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26px;
+  letter-spacing: 0.2px;
+  padding-left: 50px;
+}
 
 /*---------------------------------------
    Contact section              
@@ -605,7 +622,7 @@ a:hover, a:active, a:focus {
 
 footer {
     border-top: 1px solid #f0f0f0;
-    padding: 100px 0px;
+    padding: 50px 0px;
     position: relative;
 }
 
@@ -636,7 +653,7 @@ footer .footer-copyright {
     position: relative;
     padding: 0;
     margin: 0;
-    text-align: center;
+    text-align: right;
 }
 
 .social-icon li {
