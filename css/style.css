@@ -41,7 +41,7 @@ h4 {
 }
 
 p {
-    color: #777;
+    color: #555;
     font-size: 15px;
     font-weight: 300;
     line-height: 26px;
@@ -198,7 +198,7 @@ a:hover, a:active, a:focus {
 }
 
 .navbar-default .navbar-nav li a {
-    color: #777;
+    color: #555;
     font-size: 16px;
     letter-spacing: 1px;
     -webkit-transition: all 0.4s ease-in-out;
@@ -208,24 +208,24 @@ a:hover, a:active, a:focus {
 }
 
 .navbar-default .navbar-nav > li a:hover {
-    color: #333 !important;
+    color: #222 !important;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #777;
+    color: #222;
     background-color: transparent;
 }
 
 .navbar-default .navbar-nav li a:hover,
  .navbar-default .navbar-nav .active > a {
-    color: #333;
+    color: #222;
   }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #333;
+    color: #222;
     background-color: transparent;
 }
 
@@ -302,7 +302,7 @@ a:hover, a:active, a:focus {
 }
 
 #about ul li {
-  color: #777;
+  color: #555;
   font-size: 16px;
   font-weight: 400;
   padding-top: 2px;
@@ -388,10 +388,10 @@ a:hover, a:active, a:focus {
 }
 
 #single-project a {
-  color: #555;
+  color: #333;
   font-weight: bold;
   letter-spacing: 1px;
-  padding-left: 14px;
+  padding-left: 0px;
 }
 
 #single-project h2 {
@@ -405,7 +405,7 @@ a:hover, a:active, a:focus {
 
 #single-project .bullet-item {
   text-align: left;
-  color: #777;
+  color: #555;
   font-size: 15px;
   font-weight: 300;
   line-height: 26px;
@@ -677,7 +677,6 @@ footer .footer-copyright {
     color: #000;
     transform: scale(1.1);
 }
-
 
 
 /*---------------------------------------
