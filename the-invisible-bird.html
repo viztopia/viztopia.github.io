@@ -227,11 +227,12 @@
                          </div>
                          <div class="col-md-6 col-sm-6">
                               <p class="paragraph-text">To trigger the interaction, the user will speak the sentence
-                                   “Where’s my bird?” to summon a Twitter bird about a specific topic. Then, we would
-                                   let the user to hover her/his hand on one of the food bird container located at
+                                   “Where’s my bird?” into a microphone to summon a Twitter bird about a specific
+                                   topic. Then, we would
+                                   let the user to hover her/his hand on one of the bird food container located at
                                    either side of the cage to indicate a positive or a negative guess. After that, the
-                                   user will observe how the bird shadow reacts to figure out about the guessing
-                                   result.
+                                   user will observe how the bird shadow reacts to figure out whether their guessing is
+                                   correct or not.
                               </p>
                          </div>
                          <!-- <div class="col-md-6 col-sm-6">
@@ -259,8 +260,11 @@
                               <div style="text-align:left; padding-bottom: 20px">
                                    <strong>Discrepancy between Interactions</strong>
                               </div>
-                              <p class="paragraph-text">Problem: The audio interface happened at the front, while the
-                                   tangible interface happened at the back. This created a discrepancy between the two
+                              <p class="paragraph-text">Problem: The audio interface happened at the front (we put the
+                                   microphone at the front), while the
+                                   tangible interface happened at the back (the cage & the projection backdrop are
+                                   located behind the microphone).
+                                   This created a discrepancy between the initial voice input and subsequent
                                    interactions, and required additional effort for the users to move on to the next
                                    step in the interaction flow.
                               </p>
@@ -268,7 +272,8 @@
                                    users, we decided to push the cage backwards (making it closer to the projection
                                    plane) and incorporate the microphone inside the cage. In this case, all interface
                                    are aligned at the same place, and users will be focused on the interaction with the
-                                   cage. Also, we displayed speech recognition result to the users, so that they can
+                                   cage. Also, we displayed speech recognition result to the users (The cage heard
+                                   XXX), so that they can
                                    have immediate feedback of their voice input and thereby not losing patience.
                               </p>
                          </div>
@@ -283,7 +288,9 @@
                               <div style="text-align:left; padding-bottom: 20px">
                                    <strong>Sensors Not Sensitive Enough to Capture Every User Intention</strong>
                               </div>
-                              <p class="paragraph-text">Problem: As the size of the light sensor was relatively small
+                              <p class="paragraph-text">Problem: We used light sensors to detect which food container
+                                   the user hovered her/his hand on. As the size of the light sensor was relatively
+                                   small
                                    compared to the food container, it happened from time to time when its reading
                                    changes were not significant enough to capture a guessing intention.
                               </p>
@@ -310,7 +317,7 @@
                                    <strong>The Green And Red Texts on The Stairs Distracted Users</strong>
                               </div>
                               <p class="paragraph-text">Problem: Since the projected tweets were in green and red
-                                   colors, and they were projected onto the stairs (which looks rectangular), they
+                                   colors, and they were projected onto the stairs on both sides of the cage (which looks rectangular), they
                                    confused people with the “green & red boxes” mentioned in the voice instructions
                                    during the guessing step.
                               </p>
