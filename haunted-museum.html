@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <title>Yuguang - Haunted Museum</title>
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+     <!-- Main css -->
+     <link rel="stylesheet" href="css/style.css">
+     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+     <!-- PRE LOADER -->
+
+     <div class="preloader">
+          <div class="sk-spinner sk-spinner-wordpress">
+               <span class="sk-inner-circle"></span>
+          </div>
+     </div>
+
+     <!-- Navigation section  -->
+
+     <div class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+                    <a href="index.html" class="navbar-brand">YUGUANG ZHANG</a>
+               </div>
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li class="active"><a href="index.html">Projects</a></li>
+                         <!-- <li><a href="playground.html">Playground</a></li> -->
+                         <li><a href="http://viztopia.hosting.nyu.edu/itpblog/">Blog</a></li>
+                         <li><a href="about.html">About</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </div>
+
+
+     <!-- Single Project Section -->
+
+     <section id="single-project">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-offset-1 col-md-10 col-sm-12">
+                         <h1>Haunted Museum</h1>
+                         <div class="col-md-12 col-sm-12">
+                              <img src="images/haunted-museum/cover.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+
+                         <div class="clearfix col-md-12 col-sm-12">
+                              <hr>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4">
+                              <h3>Showcase</h3>
+                              <p>NYU Tisch Halloween Show, Oct 2018</p>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4">
+                              <h3>Tools</h3>
+                              <p>Arduino, ml5.js, p5.js, Projection, Photoshop, Webcam</p>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4">
+                              <h3>Role</h3>
+                              <p>Lead Developer, Interaction Design, Fabrication</p>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>Brief</h2>
+                              <p class="paragraph-text">Haunted Museum is an AI installation created for the
+                                   Halloween Show 2018, hosted by the Graduate Music Theater Writing Program (GMTWP) at
+                                   NYU
+                                   Tisch. It is built for one of the themed rooms (called Twyp University Museum) in
+                                   the
+                                   show, and it will summon a ghost that can haunt and follow a museum visitor using a
+                                   machine learning algorithm called <a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5">PoseNet</a>.
+                                   It
+                                   is a project co-created by me, <a href="https://abimunozr.tumblr.com/">Abi
+                                        Muñoz</a> and <a href="https://www.brianathemusical.com/">Briana Whyte
+                                        Harris</a>.</p>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>Ideation</h2>
+                              <p class="paragraph-text">The idea of this project originates from Briana, our project
+                                   coordinator in GMTWP. She played the role as a meseum tour guide, and she hoped that
+                                   we could embed something in her tour that could give a hint of the evil spirit which
+                                   served as the center of the Halloween storyline. Relating to museum theme, Abi and I
+                                   brainstormed and came up with the idea to
+                                   seal a ghost in one of the museum artifacts, and accitentally released it in the
+                                   middle of
+                                   Briana's tour.
+                              </p>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>Prototype</h2>
+                              <p class="paragraph-text">After the ideation, we built our first prototype
+                                   to testify the concept regarding the following:
+                              </p>
+                              <div class="bullet-item">
+                                   <ul>
+                                        <li>what type of artifacts should we use to keep/release the ghost;</li>
+                                        <li>what is the best way to visually present a ghost;</li>
+                                        <li>how could we fit the ghost into the space in the meseum room;</li>
+                                        <li>how do we enage visitors with the ghost</li>
+
+                                   </ul>
+                              </div>
+
+                         </div>
+
+
+                         <div class="col-md-12 col-sm-12">
+                              <div style="text-align:left; padding-bottom: 20px">
+                                   <strong>Eye Artifact</strong>
+                              </div>
+                              <p class="paragraph-text">To make a projection that could pop up unexpectedly, we made
+                                   a circuit with a distance sensor that would send a triggering single to
+                                   the laptop if someone placed an object close enough to the sensor. Parallel to the
+                                   sensor, we also put four groups of LEDs in series, in order to create an evil
+                                   blinking eye artifact that would be triggered once the ghost was projected onto the
+                                   wall.
+                              </p>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/eye1.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/eye2.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/eye3.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/eye4.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+
+                         <div class="col-md-12 col-sm-12" style="padding-top:10px">
+                              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/296893524?portrait=0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+                              <script src="https://player.vimeo.com/api/player.js"></script>
+                         </div>
+
+
+                         <div class="col-md-12 col-sm-12">
+                              <div style="text-align:left; padding-bottom: 20px">
+                                   <strong>Ghost Projection</strong>
+                              </div>
+                              <p class="paragraph-text">In light of the overall 1950s aesthetics of the show, we
+                                   created a ghost that adopts the Cthulhu image with a black and white body of an
+                                   old-fashioned sculpture. To enage the musuem visitors with the
+                                   ghost, we used a machine learning algorithm called PoseNet from <a href="https://ml5js.org/">ml5.js</a>
+                                   to track the visitor's motion with
+                                   webcam, and dynamically adjusted the ghost position based on the visitor's movement.
+                              </p>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/ghost1.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/ghost2.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>User Testing</h2>
+                              <p class="paragraph-text">With the prototype, we ran several rounds of user testings in
+                                   the museum room to figure out the optimal way to present the ghost in a way that
+                                   could both fit into the entire space and yet surprise the audience:
+                              </p>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <div style="text-align:left; padding-bottom: 20px">
+                                   <strong>Room Audio</strong>
+                              </div>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <p class="paragraph-text">Initially we played the ghost audio from the laptop along with
+                                   the sketch. But during the user testing, we realized that we could take
+                                   advantage of the space in the room for audio playback. It turned out to be much more
+                                   unexpected and creepier when we played the background sound from the other end of
+                                   the
+                                   room via a networked computer. According to the audience, it really felt like the
+                                   room was occupied by
+                                   the ghost when the sound reverbed.
+                              </p>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/296893438?portrait=0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+                              <script src="https://player.vimeo.com/api/player.js"></script>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <div style="text-align:left; padding-bottom: 20px">
+                                   <strong>Setup of Projector & Artifact</strong>
+                              </div>
+
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <p class="paragraph-text">Based the size of the
+                                   walls, the position of tables/chairs, the path that was designed for the audience to
+                                   navigate inside the room, and the positions of the outlets (so that we could plug
+                                   the projector and laptop to make the project works), we came up with a few
+                                   combinatons of setup, and eventually decided to place the projector under a
+                                   sculpture stool
+                                   in the middle of the room, and casted the ghost to the wall from the sides.
+                              </p>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/projector.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <div style="text-align:left; padding-bottom: 20px">
+                                   <strong>Adjustment of Sketch & Artifact</strong>
+                              </div>
+                              <p class="paragraph-text">One of the problems identified during the testing was that not
+                                   many people recognized the Cthulhu (octopus) image, and they thought of it more of
+                                   an
+                                   animal rather than a ghost. So we replaced its upper part with a human head. Also,
+                                   as
+                                   the blinking eye effect was considered somewhat contradicting the 50s aesthetics,
+                                   we removed the LEDs
+                                   and put it under a portrait to make it less noticable.
+                              </p>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/ghost3.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/portrait.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+
+                         <div class="clearfix"></div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>NYU Tisch Halloween Show</h2>
+                              <p class="paragraph-text">Our piece was presented on the NYU Tisch Halloween Show 2018.
+                                   It was well
+                                   received and considered as one of the best installations in the event.
+                              </p>
+                         </div>
+
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/show1.jpg" class="img-responsive" alt="Portfolio">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="images/haunted-museum/show2.jpg" class="img-responsive" alt="Portfolio">
+
+                         </div>
+                         <div class="col-md-12 col-sm-12" style="padding-top:10px">
+                              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/297858028?portrait=0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+                              <script src="https://player.vimeo.com/api/player.js"></script>
+                         </div>
+                         <div class="col-md-12 col-sm-12" style="padding-top:10px">
+                              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/297858032?portrait=0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+                              <script src="https://player.vimeo.com/api/player.js"></script>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <a href="index.html">Back to Projects</a>
+                         </div>
+
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+     <!-- Footer Section -->
+
+     <footer>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                         <div class="footer-copyright">
+                              <p>Connect</p>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                         <ul class="social-icon">
+                              <li><a href="https://www.linkedin.com/in/yuguang-zhang" class="fa fa-linkedin"></a></li>
+                              <li><a href="https://www.instagram.com/ygantigravity/" class="fa fa-instagram"></a></li>
+                              <li><a href="mailto:yuguang.zhang@nyu.edu" class="fa fa-envelope"></a></li>
+
+                         </ul>
+                    </div>
+
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+
+</html>
