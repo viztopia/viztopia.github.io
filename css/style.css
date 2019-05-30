@@ -32,6 +32,10 @@ h2 {
 h3 {
   font-size: 26px;
 }
+h3.indexH3 {
+  font-size: 26px;
+  padding-left: 13px;
+}
 
 h4 {
   color: #666;
