@@ -1,41 +1,283 @@
-<<html>
-    <header>
-        <title>Seed: HUMAN</title>
-        <style>
-            p {
-                font-size: 24px;
-                font-family: 'Courier New';
-                color: #000000;
-                background-color: transparent;
-                font-weight: 400;
-                font-style: normal;
-                font-variant: normal;
-                text-decoration: none;
-                vertical-align: baseline;
-                white-space: pre;
-            }
-        </style>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
-        <p>
-            Seed: HUMAN
+<head>
 
-            Seed: HUMAN is a generative photography piece that explores the role 
-            Artificial intelligence plays in co-creating artworks with human.
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-            To tell a visual story in a world infiltrated by intelligent machines, 
-            how much agency do we actually have as human? 
-            Are we the photographer, or simply a walking camera? 
-            Who is the artist? AI or me?
-            How credible is story teller in this sense?
+    <title>Seed: HUMAN</title>
 
-            This project consists of a series of images in groups of four. 
-            Two machine learning models are used: 
-            one for interpreting the content of first image in one sentence, 
-            the other for generating a narrative based on that sentence. 
-            A human then attempts to visualize the whole narrative by taking 
-            3 subsequent photographs according to the keywords from the generated texts.</p>
-    </body>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    </html>>
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- PRE LOADER -->
+
+    <div class="preloader">
+        <div class="sk-spinner sk-spinner-wordpress">
+            <span class="sk-inner-circle"></span>
+        </div>
+    </div>
+
+    <!-- Navigation section  -->
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">YUGUANG ZHANG</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">Projects</a></li>
+                    <li><a href="experiments.html">Experiments</a></li>
+                    <li><a href="http://viztopia.hosting.nyu.edu/itpblog/">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Single Project Section -->
+
+    <section id="single-project">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10 col-sm-12">
+
+                    <div class="col-md-6 col-sm-6">
+                        <h1>Seed: HUMAN</h1>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <img src="images/seed-human/thumb.jpg" class="img-responsive" alt="Portfolio">
+                    </div>
+
+                    <div class="clearfix col-md-12 col-sm-12">
+                        <hr>
+                    </div>
+
+                    <!-- <div class="col-md-4 col-sm-4">
+                              <h3>Showcase</h3>
+                              <p>Cycling '74 Expo 2019 @Mass Moca
+                                   <br />
+                                   IDM Show 2019
+                                   <br />
+                                   ITP/IMA Spring Show 2019
+                              </p>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4">
+                              <h3>Tools</h3>
+                              <p>StyleGAN, Max/MSP, Projection, Myo, Serge Synthesizor</p>
+                         </div>
+
+                         <div class="col-md-4 col-sm-4">
+                              <h3>Role</h3>
+                              <p>Developer, Performer</p>
+                         </div> -->
+
+                    <div class="col-md-12 col-sm-12">
+                        <h2>Statement</h2>
+                        <p class="paragraph-text">Seed: HUMAN is a generative photography piece that explores the role
+                            Artificial intelligence plays
+                            in co-creating artworks with the human.
+                            <br />
+                            <br />
+                            To tell a visual story in a world infiltrated by intelligent machines,
+                            how much agency do we actually have as a human?
+                            Are we the photographer, or simply a walking camera?
+                            Who is the artist? AI or us?
+                            How credible is the storyteller in this sense?
+                            <br />
+                            <br />
+                            This project consists of a series of images in groups of four.
+                            Two machine learning models are used:
+                            one for interpreting the content of the first image in one sentence,
+                            the other for generating a narrative based on that sentence.
+                            A human then attempts to visualize the whole narrative by taking
+                            three subsequent photographs according to the keywords from the generated narrative.
+
+                        </p>
+                        <!-- <a href="#"><i class="fa fa-long-arrow-right"></i> View Website</a> -->
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <img src="images/seed-human/portfolio.jpeg" class="img-responsive" alt="Portfolio">
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <h2>Generated Narratives</h2>
+                        <strong>Story 1</strong>
+                        <p class="paragraph-text">
+                            <br />
+                            <i>A dog is sitting on top of a window sill.</i>
+                            It stares up at the stars, or, for an instant, at something it couldn’t possibly see,
+                            especially with the corkscrew-shaped top. It feels blue.
+                            Suddenly, a big group of people surrounds the dog and drags it into a cage.
+                            Not before grabbing a water bowl, taking off its shoes, and placing the kennel right on top
+                            of it.
+                            What is the dog going to do?
+                            It can do nothing. It isn’t going to run away. Not again. What will happen is that he will
+                            fall flat on his face. And then, some sadistic person will stuff him back into his cage, on
+                            top of the “observation window,” still staring up at the stars, losing his mind, and
+                            wondering why a dog would ever think twice about visiting the freestanding observation
+                            window of the Kennedy Space Center.
+                        </p>
+                        <br />
+                        <strong>Story 2</strong>
+                        <p class="paragraph-text">
+                            <br />
+                            <i>A person next to a wall.</i>
+                            A notched scrap metal fence painted with the mayor's name on it. A beer cap. Crayons of
+                            different shapes and sizes. In downtown Murray, Virginia, a banner offering little more than
+                            a slogan of "If you want to make her vote, go to the polls" hangs on a lamppost near a bus
+                            stop.
+                            The recent election result in Virginia's 4th Congressional District was a surprise to many
+                            because turnout was so low, at only about 34 percent of the district's voters. But some
+                            recent reporting found the city — an affluent city of about 91,000 — may be producing a
+                            social media savvy voter unlike any other in the country.
+                            In cities around the country, there are tight races between incumbent city officials and
+                            challengers that hinge largely on social media interactions.
+                            Instead of printing thousands of handouts in campaign languages or canvassing door to door,
+                            Murray's candidates have relied on a well-staffed Facebook page and Twitter account to
+                            spread word of their plans. They have taken cues from progressive organizations in Virginia
+                            where elections have been successfully fought via social media. They have launched
+                            personalized online ads — one for a candidate could be about voter registration, another
+                            about an assault on clean air — and held press conferences.
+                        </p>
+                        <br />
+                        <strong>Story 3</strong>
+                        <p class="paragraph-text">
+                            <br />
+                            <i>A group of people are working on the street.</i>
+                            It’s autumn and they’re making a hammock as a
+                            Christmas present. They go to sleep and a year passes. No hammock ever materializes. The
+                            scene seems cruel, somehow.
+                            Only then they notice that the skies are very blue on Christmas day. They go back home to
+                            talk about it. A few months later, they visit friends who mention the blue sky and have some
+                            fun breaking it down. “It’s our spiritual color,” one of them explains, “and one of the most
+                            prominent signs of the coming of Christ’s second coming.”
+                            This little exchange reminded me of a few real-life events happening now, and I thought it
+                            would be a good idea to write down my thoughts about the blue sky phenomena. Although
+                            usually the notion of the blue sky is used to celebrate the coming of the Christ child, I’ve
+                            always found it oddly fascinating.
+                        </p>
+                        <br />
+                        <strong>Story 4</strong>
+                        <p class="paragraph-text">
+                            <br />
+                            <i>A plane is flying in the sky.</i>
+                            Behind it is a star, rising and setting. If you were floating alone in space you could see
+                            it quite clearly, but others would be much less likely to catch a glimpse. Where, then, are
+                            your neighbors?
+                            You swim through a swimming pool that is the size of a continent. Your movements are
+                            measured by people on machines that can accelerate in any direction. This pool is
+                            illuminated by the sun, which is beaming a yellowish beam in all directions. The whole pool
+                            is glowing purple, your own reflection.
+                            Your limbs follow your head. They are curled or extended in a wild manner, like a cluster of
+                            houseflies. That is how your brain interprets the gestures of these insects.
+                        </p>
+                        <br />
+
+                    </div>
+
+
+
+                    <!-- <div class="col-md-12 col-sm-12">
+                              <h2>IDM Show 2019 Performance</h2>
+                              <p class="paragraph-text">This piece was performed at the Cycling '74 Expo on April, 2019.
+                              </p>
+                              <img src="images/cats/expo74_cats.jpg" class="img-responsive" alt="Portfolio">
+                              <br />
+                              <div class="iframe-container">
+                                   <iframe width="853" height="480"
+                                        src="https://www.youtube.com/embed/ZU0TcJzQNus?rel=0" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                              </div>
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <h2>ITP/IMA Spring Show 2019</h2>
+                              <p class="paragraph-text">This piece was performed at the Cycling '74 Expo on April, 2019.
+                              </p>
+                              <img src="images/cats/expo74_cats.jpg" class="img-responsive" alt="Portfolio">
+                              <br />
+                              <div class="iframe-container">
+                                   <iframe width="853" height="480"
+                                        src="https://www.youtube.com/embed/ZU0TcJzQNus?rel=0" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                              </div>
+                         </div> -->
+
+                    <!-- <div class="col-md-12 col-sm-12">
+                              <a href="index.html">Back to Projects</a>
+                         </div> -->
+                    <div class="col-md-12 col-sm-12">
+                        <a href="experiments.html">Back to Experiments</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="footer-copyright">
+                        <p>Connect</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <ul class="social-icon">
+                        <li><a href="https://github.com/viztopia" class="fa fa-github"></a></li>
+                        <li><a href="https://www.linkedin.com/in/yuguang-zhang" class="fa fa-linkedin"></a></li>
+                        <li><a href="https://www.instagram.com/ygantigravity/" class="fa fa-instagram"></a></li>
+                        <li><a href="mailto:yuguang.zhang@nyu.edu" class="fa fa-envelope"></a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
