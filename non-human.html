@@ -300,14 +300,8 @@
                                    of the motors’ movements.
                               </p>
                               <p class="paragraph-text">
-                                   To drive the actual movement of the bed sheet, I recorded many hours of myself
-                                   sleeping, and was planning to do a one-to-one mapping. But then I realized, in this
-                                   way, the bedsheet would simply became a replicate of myself. To move it further away
-                                   from the human-ness end, and closer to object-ness end, I would need something that
-                                   is about me, but not just me. In other words, an abstraction of a human being.
-                              </p>
-                              <p class="paragraph-text">
-                                   So instead of direct mapping, I trained a GAN with my recordings, and applied
+                                   In order to create an abstraction of a human and use it to drive the actual movement
+                                   of the bed sheet, I trained a GAN with my sleeping recordings, and applied
                                    movement tracking on top of the generated images. These movements are then recorded
                                    in MongoDB, and became the final dataset I used to drive the bedsheet.
                               </p>
