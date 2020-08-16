@@ -32,7 +32,7 @@ function draw() {
     //     console.log(mouseX, mouseY);
     //     return;
     //   } else {
-        
+
     //   }
     // })
 
@@ -48,10 +48,12 @@ function draw() {
     image(minImg.img, 0, 0, 600, 338);
     //     console.log(mouseX, mouseY);
 
+  } else {
+    text("Loading YGs...", width / 2 - 50, height / 2);
   }
 }
 
-function replaceImgArray(imgs){
+function replaceImgArray(imgs) {
   imgArray = [];
   let keys = Object.keys(imgs);
   keys.forEach(k => {
@@ -70,7 +72,7 @@ function replaceImgArray(imgs){
 }
 
 function keyPressed() {
- if (key == 'p') {
+  if (key == 'p') {
     console.log("start playing!");
     startPlaying = true;
   } else if (key == 's') {
@@ -90,6 +92,6 @@ function keyPressed() {
 }
 
 
-function mousePressed(){
+function mousePressed() {
   console.log(mouseX, mouseY);
 }
