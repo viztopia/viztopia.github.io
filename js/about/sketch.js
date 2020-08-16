@@ -52,6 +52,7 @@ function draw() {
   } else {
     background(255);
     text("Loading YGs...", width / 2 - 50, height / 2);
+    // image(imgArray[0].img, 0, 0, 600, 338);
   }
 }
 
