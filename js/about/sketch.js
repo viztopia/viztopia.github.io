@@ -11,7 +11,7 @@ function setup() {
   c.parent("canvasContainer");
   loadJSON('js/about/wave600.json', replaceImgArray);
   pixelDensity(1);
-
+  noStroke();
 }
 
 function modelReady() {
@@ -47,8 +47,10 @@ function draw() {
     })
     image(minImg.img, 0, 0, 600, 338);
     //     console.log(mouseX, mouseY);
+    // text("Loading YGs...", width / 2 - 50, height / 2);
 
   } else {
+    background(255);
     text("Loading YGs...", width / 2 - 50, height / 2);
   }
 }
