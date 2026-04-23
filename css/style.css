@@ -751,3 +751,470 @@ footer .footer-copyright {
 }
 
 
+/* ============================================================
+   PROJECT EDITORIAL SYSTEM  (Phase 2)
+   Applied to pages that wrap content in <article class="project">.
+   Legacy project pages still use the #single-project rules above.
+   See .impeccable.md for the design rationale.
+   ============================================================ */
+
+:root {
+     --ink: #0a0a0a;
+     --text: #1a1a1a;
+     --text-muted: #6a6a6a;
+     --hairline: rgba(0, 0, 0, 0.08);
+     --paper: #fafaf8;
+
+     --fs-h1: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
+     --fs-h2: clamp(1.5rem, 1.15rem + 1.6vw, 2.25rem);
+     --fs-label: clamp(0.875rem, 0.83rem + 0.2vw, 1rem);
+     --fs-body: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
+     --fs-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+     --fs-note: clamp(1rem, 0.95rem + 0.25vw, 1.1875rem);
+
+     --line-body: 1.65;
+     --line-display: 1.08;
+
+     --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+     --t-fast: 200ms;
+     --t-med: 400ms;
+     --t-slow: 700ms;
+
+     --gap-col: clamp(0.75rem, 1.25vw, 1.25rem);
+     --gap-aside: clamp(2rem, 3.5vw, 4rem);
+}
+
+/* ---------- Article wrapper + the editorial grid ---------- */
+
+.project {
+     color: var(--text);
+     font-size: var(--fs-body);
+     line-height: var(--line-body);
+     font-weight: 300;
+     padding: clamp(3rem, 5vw, 6rem) 0 clamp(5rem, 8vw, 9rem);
+     display: grid;
+     grid-template-columns:
+          [full-start] minmax(1.5rem, 1fr)
+          [wide-start] min(calc(100% - 3rem), 88rem)
+          [wide-end] minmax(1.5rem, 1fr)
+          [full-end];
+     row-gap: clamp(3.5rem, 6vw, 6.5rem);
+}
+
+.project > * { grid-column: wide; }
+
+/* ---------- Typography inside .project ---------- */
+
+.project h1 {
+     font-size: var(--fs-h1);
+     line-height: var(--line-display);
+     font-weight: 200;
+     letter-spacing: -0.02em;
+     margin: 0 0 clamp(1rem, 2vw, 2rem);
+     max-width: 20ch;
+}
+
+.project h2 {
+     font-size: var(--fs-h2);
+     line-height: 1.2;
+     font-weight: 300;
+     letter-spacing: -0.005em;
+     margin: clamp(3rem, 6vw, 6rem) 0 clamp(0.75rem, 1.5vw, 1.25rem);
+     max-width: 28ch;
+}
+
+.project h3 {
+     font-size: var(--fs-label);
+     font-weight: 400;
+     letter-spacing: 0.14em;
+     text-transform: uppercase;
+     color: var(--text-muted);
+     margin: 0 0 0.5rem;
+}
+
+/* Subsection labels (direct children of .project) get breathing room above */
+.project > h3 {
+     margin: clamp(2rem, 4vw, 4rem) 0 0.25rem;
+}
+
+/* -----------------------------------------------------------
+   Paragraph hierarchy — one font size for reading text, width
+   and style do the differentiating work.
+
+   - p.lede    : italic, narrower column (50ch) — "opening line"
+   - p         : body, widest reading column (64ch)
+   - p.subtitle: under an h2, slightly larger italic muted "deck"
+   - p.note    : small muted caption/credit
+   Paragraphs nested inside figures (.prose, figcaption) inherit
+   the base p rule only — they're NOT indented, so the image+text
+   asides keep consistent gutters. Indent is applied only to direct
+   children of .project (below), creating the hanging-h2 rhythm.
+------------------------------------------------------------ */
+
+.project p {
+     margin: 0 0 1.4rem;
+     font-size: var(--fs-body);
+     line-height: var(--line-body);
+     font-weight: 300;
+     max-width: 64ch;
+}
+
+.project p.lede {
+     font-size: var(--fs-lede);
+     font-style: italic;
+     max-width: 52ch;
+     margin: 0 0 0.6rem;
+}
+.project p.lede + p.lede {
+     margin-top: 0;
+}
+
+.project p.subtitle {
+     font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+     line-height: 1.45;
+     font-style: italic;
+     color: var(--text-muted);
+     max-width: 55ch;
+     margin: -0.5rem 0 clamp(0.5rem, 1vw, 1rem);
+}
+
+.project p.note {
+     font-size: var(--fs-note);
+     color: var(--text-muted);
+     max-width: 46ch;
+     font-style: normal;
+}
+
+/* Indent only direct-child paragraphs so headings and figures hang at the
+   content rail while reading paragraphs sit in a slightly inset column.
+   Nested paragraphs (inside .prose / figcaption) keep their natural position. */
+.project > p {
+     padding-left: clamp(0rem, 3vw, 3.5rem);
+}
+
+.project strong {
+     font-weight: 500;
+}
+
+/* ---------- Links ---------- */
+
+.project a {
+     color: inherit;
+     text-decoration: underline;
+     text-decoration-color: rgba(0, 0, 0, 0.28);
+     text-decoration-thickness: 1px;
+     text-underline-offset: 3px;
+     font-weight: 400;
+     transition:
+          text-decoration-color var(--t-med) var(--ease-out),
+          text-decoration-thickness var(--t-med) var(--ease-out);
+}
+.project a:hover {
+     text-decoration-color: currentColor;
+     text-decoration-thickness: 2px;
+}
+
+/* ---------- Meta row (awards / press / tools) ---------- */
+
+.project .meta {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+     gap: clamp(1.5rem, 3vw, 3rem);
+     padding: clamp(2rem, 4vw, 3.5rem) 0;
+     border-top: 1px solid var(--hairline);
+     border-bottom: 1px solid var(--hairline);
+     margin: clamp(1rem, 2vw, 2rem) 0;
+}
+.project .meta > div > p {
+     font-size: var(--fs-body);
+     line-height: 1.55;
+     color: var(--text);
+     margin: 0;
+     max-width: none;
+     font-weight: 300;
+}
+
+/* ---------- Hairline divider ---------- */
+
+.project hr {
+     border: none;
+     border-top: 1px solid var(--hairline);
+     margin: clamp(2rem, 4vw, 4rem) 0;
+}
+
+/* ---------- Figure defaults ---------- */
+
+.project figure {
+     margin: 0;
+}
+.project figure img,
+.project figure video {
+     display: block;
+     width: 100%;
+     height: auto;
+     transition: transform var(--t-slow) var(--ease-out);
+}
+.project figure figcaption {
+     margin-top: 0.65rem;
+     font-size: var(--fs-note);
+     color: var(--text-muted);
+     max-width: 52ch;
+}
+
+/* ---------- Figure variants (the vocabulary) ---------- */
+
+/* cover — hero image at content width, natural aspect (portrait or landscape
+   both look grand at this size). Use .cover.full-bleed for edge-to-edge. */
+.project > figure.cover {
+     grid-column: wide;
+     margin-bottom: clamp(1.5rem, 3vw, 3rem);
+}
+.project > figure.cover.full-bleed {
+     grid-column: full;
+}
+
+/* .cover-meta — portrait-hero layout. Wraps <figure class="cover"> + <div class="meta">
+   so the tall hero sits on the left and the three meta columns stack vertically on
+   the right. Saves vertical space for portrait-oriented heroes. */
+.project > .cover-meta {
+     grid-column: wide;
+     display: grid;
+     grid-template-columns: 3fr 2fr;
+     gap: var(--gap-aside);
+     align-items: start;
+     margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+.project > .cover-meta > figure.cover {
+     margin: 0;
+     grid-column: 1;
+}
+.project > .cover-meta > .meta {
+     grid-template-columns: 1fr;
+     gap: clamp(1.5rem, 3vw, 2.5rem);
+     padding: clamp(0.75rem, 1.5vw, 1.25rem) 0 0;
+     margin: 0;
+     border: none;
+}
+.project > .cover-meta > .meta > div {
+     border-top: 1px solid var(--hairline);
+     padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+.project > .cover-meta > .meta > div:first-child {
+     border-top: none;
+     padding-top: 0;
+}
+
+@media (max-width: 48rem) {
+     .project > .cover-meta {
+          grid-template-columns: 1fr;
+     }
+}
+
+/* wide — content width, the default for a horizontal photo */
+.project > figure.wide {
+     grid-column: wide;
+}
+
+/* pair — two images 50/50, auto-cropped to matching 3:2 landscape.
+   Add .portraits modifier for two portrait images (2:3 aspect).
+   Supports either direct <img> children (shared or no caption) or nested
+   <figure> children (per-image caption). */
+.project > figure.pair {
+     grid-column: wide;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: var(--gap-col);
+}
+.project > figure.pair > img,
+.project > figure.pair > video {
+     aspect-ratio: 3 / 2;
+     object-fit: cover;
+}
+.project > figure.pair.portraits > img,
+.project > figure.pair.portraits > video {
+     aspect-ratio: 2 / 3;
+}
+
+/* Nested per-image captions: each child <figure> holds its own img + figcaption */
+.project > figure.pair > figure {
+     margin: 0;
+     display: flex;
+     flex-direction: column;
+     gap: 0.5rem;
+}
+.project > figure.pair > figure > img,
+.project > figure.pair > figure > video {
+     width: 100%;
+     height: auto;
+     aspect-ratio: 3 / 2;
+     object-fit: cover;
+}
+.project > figure.pair.portraits > figure > img,
+.project > figure.pair.portraits > figure > video {
+     aspect-ratio: 2 / 3;
+}
+
+/* .pair.offset — equal columns (so both images carry the same weight) but
+   the second image is nudged down a bit so the eye reads diagonal rhythm
+   rather than two flush rectangles. */
+.project > figure.pair.offset {
+     align-items: start;
+}
+.project > figure.pair.offset > *:nth-child(2) {
+     margin-top: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+/* triptych — three side by side, cropped to 4:3 for a uniform row */
+.project > figure.triptych {
+     grid-column: wide;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: var(--gap-col);
+}
+.project > figure.triptych > img,
+.project > figure.triptych > video {
+     aspect-ratio: 4 / 3;
+     object-fit: cover;
+}
+
+/* portrait — vertical image, centered, capped */
+.project > figure.portrait {
+     grid-column: wide;
+     max-width: min(56%, 34rem);
+     margin-inline: auto;
+}
+.project > figure.portrait img {
+     max-height: 85vh;
+     object-fit: contain;
+     margin: 0 auto;
+}
+
+/* .portrait.offset-left / .offset-right — aligns to a side instead of center,
+   useful to break the rhythm after a centered pair or wide figure. */
+.project > figure.portrait.offset-left  { margin-inline: 0 auto; }
+.project > figure.portrait.offset-right { margin-inline: auto 0; }
+
+/* aside-left / aside-right — image + paragraph side by side.
+   Image column is slightly narrower than text so the composition reads
+   asymmetric rather than blocky (5 : 7). Image is auto-cropped to 4:5
+   so portrait and landscape sources both settle at a consistent height. */
+.project > figure.aside-left,
+.project > figure.aside-right {
+     grid-column: wide;
+     display: grid;
+     gap: var(--gap-aside);
+     align-items: start;
+}
+.project > figure.aside-left  { grid-template-columns: 5fr 7fr; }  /* image narrow on left */
+.project > figure.aside-right { grid-template-columns: 7fr 5fr; }  /* image narrow on right */
+
+.project > figure.aside-left > img,
+.project > figure.aside-left > video,
+.project > figure.aside-right > img,
+.project > figure.aside-right > video {
+     aspect-ratio: 4 / 5;
+     object-fit: cover;
+}
+
+/* .natural — keep the image's own aspect (no crop). Use when the image is
+   a diagram, spectrum, or anything that loses meaning if cropped. */
+.project > figure.aside-left.natural > img,
+.project > figure.aside-left.natural > video,
+.project > figure.aside-right.natural > img,
+.project > figure.aside-right.natural > video {
+     aspect-ratio: auto;
+     object-fit: contain;
+}
+.project > figure.aside-left > img,
+.project > figure.aside-left > video,
+.project > figure.aside-left > picture {
+     order: 1;
+}
+.project > figure.aside-left > .prose {
+     order: 2;
+}
+.project > figure.aside-right > img,
+.project > figure.aside-right > video,
+.project > figure.aside-right > picture {
+     order: 2;
+}
+.project > figure.aside-right > .prose {
+     order: 1;
+}
+.project figure .prose > *:first-child { margin-top: 0; }
+.project figure .prose > *:last-child { margin-bottom: 0; }
+
+/* inset — small image inline with prose */
+.project > figure.inset {
+     grid-column: wide;
+     display: grid;
+     grid-template-columns: 1fr 2fr;
+     gap: var(--gap-aside);
+     align-items: start;
+}
+
+/* video — 16:9 iframe container */
+.project > figure.video {
+     grid-column: wide;
+     position: relative;
+     aspect-ratio: 16 / 9;
+     width: 100%;
+}
+.project > figure.video iframe {
+     position: absolute;
+     inset: 0;
+     width: 100%;
+     height: 100%;
+     border: 0;
+}
+
+/* stack — multiple images inside a single .aside (keeps column width shared) */
+.project > figure.aside-left > .stack,
+.project > figure.aside-right > .stack {
+     display: flex;
+     flex-direction: column;
+     gap: var(--gap-col);
+}
+.project > figure.aside-left > .stack > img,
+.project > figure.aside-right > .stack > img { width: 100%; height: auto; }
+
+/* ---------- Back link ---------- */
+
+.project .project-back {
+     margin-top: clamp(2rem, 4vw, 4rem);
+     padding-top: clamp(1.25rem, 2.5vw, 2rem);
+     border-top: 1px solid var(--hairline);
+}
+.project .project-back a {
+     font-size: var(--fs-body);
+     letter-spacing: normal;
+}
+
+/* ---------- Mobile: collapse every 2-up to 1 column ---------- */
+
+@media (max-width: 48rem) {
+
+     .project > figure.pair,
+     .project > figure.triptych,
+     .project > figure.aside-left,
+     .project > figure.aside-right,
+     .project > figure.inset {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+     }
+
+     .project > figure.aside-left > img,
+     .project > figure.aside-left > .prose,
+     .project > figure.aside-left > .stack,
+     .project > figure.aside-right > img,
+     .project > figure.aside-right > .prose,
+     .project > figure.aside-right > .stack {
+          order: 0;
+     }
+
+     .project > figure.portrait {
+          max-width: 88%;
+     }
+
+     .project h1 { max-width: none; }
+}
