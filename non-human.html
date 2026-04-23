@@ -53,7 +53,7 @@
 
           <h1>(Non-)Human</h1>
 
-          <figure class="cover">
+          <figure class="cover reveal">
                <img src="images/non-human/1.jpg" alt="(Non-)Human installation">
           </figure>
 
@@ -84,7 +84,7 @@
                What is human, what is not human, what is in-between? (Non-)Human is an art installation that conjures the hidden human-ness in objects and imagines a speculative world where a human exists in non-human forms.
           </p>
 
-          <figure class="video">
+          <figure class="video reveal">
                <iframe src="https://player.vimeo.com/video/421741868?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
           </figure>
 
@@ -96,7 +96,7 @@
                Yet, objects keep our traces, like dents in our shoes, or the erased keys on our laptop. Objects carry our memories, like an inherited music box, or a bowl with the smell of mom’s favorite recipe. Objects also shape us either physically or behaviorally: a scar from a knife cut; a spontaneous “sorry” when we bump into a table. All of these suggest a possible deeper connection between humans and objects, which we don’t notice on a daily basis.
           </p>
 
-          <figure class="wide">
+          <figure class="wide reveal">
                <img loading="lazy" src="images/non-human/2.jpg" alt="A moment from the installation">
           </figure>
 
@@ -107,7 +107,7 @@
                As a response, (Non-)Human is a series of art installations that explore the semi-human, semi-object territory by creating humans in non-human forms. The initial piece of this series is a bedsheet that tweaks and bends in the form of its owner, now up and out for the day.
           </p>
 
-          <figure class="wide">
+          <figure class="wide reveal">
                <img loading="lazy" src="images/non-human/closeup.gif" alt="Close-up of the bedsheet in motion">
           </figure>
 
@@ -116,7 +116,7 @@
                The project is based on research in three domains: discoveries in physics and cosmology regarding the origin of life and human; philosophical notions about the relationship of consciousness to the universe as a whole; and related religious roots.
           </p>
 
-          <figure class="aside-left natural">
+          <figure class="aside-left natural reveal">
                <img loading="lazy" src="images/non-human/spectrum.jpg" alt="Spectrum between human-ness and object-ness">
                <div class="prose">
                     <p>
@@ -133,7 +133,7 @@
 
           <h3>Human as Imprints</h3>
 
-          <figure class="aside-left">
+          <figure class="aside-left reveal">
                <div class="stack">
                     <img loading="lazy" src="images/non-human/imprint1.jpg" alt="Bedsheet imprints study">
                     <img loading="lazy" src="images/non-human/imprint3.gif" alt="Imprint movement test">
@@ -157,7 +157,7 @@
 
           <h3>Bed Frame &amp; Motors as Skeleton</h3>
 
-          <figure class="aside-right">
+          <figure class="aside-right reveal">
                <img loading="lazy" src="images/non-human/bedframe1.jpg" alt="Bed frame prototype with stepper motors">
                <div class="prose">
                     <p>
@@ -169,7 +169,7 @@
                </div>
           </figure>
 
-          <figure class="aside-left">
+          <figure class="aside-left reveal">
                <img loading="lazy" src="images/non-human/bedframe2.gif" alt="Bedsheet moving over the mounted structure">
                <div class="prose">
                     <p>
@@ -180,7 +180,7 @@
 
           <h3>ML as Abstraction</h3>
 
-          <figure class="aside-left">
+          <figure class="aside-left reveal">
                <div class="stack">
                     <img loading="lazy" src="images/non-human/movement1.gif" alt="Movement abstraction test">
                     <img loading="lazy" src="images/non-human/movement2.gif" alt="Movement abstraction test">
@@ -202,18 +202,18 @@
                The final result is a moving bedsheet whose movements are generated as time goes by. It originates from a human, but it is beyond human. These abstractions of moving elbows and knees are what conjure the human-ness in this non-human object.
           </p>
 
-          <figure class="pair">
+          <figure class="pair reveal">
                <img loading="lazy" src="images/non-human/bed.gif" alt="Bedsheet moving, first variation">
                <img loading="lazy" src="images/non-human/bed2.gif" alt="Bedsheet moving, second variation">
           </figure>
 
-          <figure class="wide">
+          <figure class="wide reveal">
                <img loading="lazy" src="images/non-human/bed3.jpg" alt="Final installation view">
           </figure>
 
           <h2>Exhibition Views</h2>
 
-          <figure class="pair portraits offset">
+          <figure class="pair portraits offset reveal">
                <figure>
                     <img loading="lazy" src="images/non-human/19.jpg" alt="Installation at Maxxi, Rome">
                     <figcaption>Maxxi — National Museum of XXI Century Arts, Rome.<br/>Photo by Sebastiano Luciano; courtesy Re:Humanism.</figcaption>
@@ -264,6 +264,45 @@
                     document.querySelector('.navbar-collapse').classList.toggle('in');
                }
           });
+
+          (function () {
+               var reveals = document.querySelectorAll('.reveal');
+               if (reveals.length) {
+                    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (reduced || !('IntersectionObserver' in window)) {
+                         reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+                    } else {
+                         var vh = window.innerHeight;
+                         var toObserve = [];
+                         reveals.forEach(function (el) {
+                              var rect = el.getBoundingClientRect();
+                              if (rect.top < vh * 0.95) {
+                                   el.classList.add('no-anim', 'is-revealed');
+                              } else {
+                                   toObserve.push(el);
+                              }
+                         });
+                         var io = new IntersectionObserver(function (entries) {
+                              entries.forEach(function (entry) {
+                                   if (entry.isIntersecting) {
+                                        entry.target.classList.add('is-revealed');
+                                        io.unobserve(entry.target);
+                                   }
+                              });
+                         }, { rootMargin: '0px 0px -5% 0px' });
+                         toObserve.forEach(function (el) { io.observe(el); });
+                    }
+               }
+
+               var nav = document.querySelector('.navbar-default');
+               if (nav) {
+                    var onScroll = function () {
+                         nav.classList.toggle('is-scrolled', window.scrollY > 8);
+                    };
+                    onScroll();
+                    window.addEventListener('scroll', onScroll, { passive: true });
+               }
+          })();
      </script>
 
 </body>

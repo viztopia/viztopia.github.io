@@ -54,7 +54,7 @@
          <h1>Nephophile</h1>
 
          <div class="cover-meta">
-              <figure class="cover">
+              <figure class="cover reveal">
                    <img src="images/nephophile/0.jpg" alt="Nephophile — a lone field device at Maajaam">
               </figure>
               <div class="meta">
@@ -85,12 +85,12 @@
               In the wild field of Maajaam, Estonia, three Nephophile devices — each a camera, a phone booth, and an AI agent connected between them — are scattered across the lawn. They are positioned to study clouds differently: one sees through trees, one watches the pond, one views the open sky.
          </p>
 
-         <figure class="pair">
+         <figure class="pair reveal">
               <img loading="lazy" src="images/nephophile/1.jpg" alt="Nephophile device among the trees">
               <img loading="lazy" src="images/nephophile/3.jpg" alt="Nephophile device watching the pond">
          </figure>
 
-         <figure class="aside-right">
+         <figure class="aside-right reveal">
               <img loading="lazy" src="images/nephophile/2.jpg" alt="A Nephophile phone booth, viewed in portrait">
               <div class="prose">
                    <p>
@@ -102,23 +102,23 @@
               </div>
          </figure>
 
-         <figure class="wide">
+         <figure class="wide reveal">
               <img loading="lazy" src="images/nephophile/5.jpg" alt="Interior workings of a Nephophile device">
          </figure>
 
          <h2>Exhibition View</h2>
          <p class="subtitle">Wild Bits 2025 · Maajaam, Ojaveere, Estonia</p>
 
-         <figure class="wide">
+         <figure class="wide reveal">
               <img loading="lazy" src="images/nephophile/6.jpg" alt="Exhibition establishing shot">
          </figure>
 
-         <figure class="pair offset">
+         <figure class="pair offset reveal">
               <img loading="lazy" src="images/nephophile/6-1.jpg" alt="Exhibition detail">
               <img loading="lazy" src="images/nephophile/6-2.jpg" alt="Exhibition detail">
          </figure>
 
-         <figure class="portrait">
+         <figure class="portrait reveal">
               <img loading="lazy" src="images/nephophile/7.jpg" alt="Exhibition visitor with a Nephophile device">
               <figcaption>All photos by Ya Chuan Chen (J.)</figcaption>
          </figure>
@@ -163,6 +163,45 @@
                     document.querySelector('.navbar-collapse').classList.toggle('in');
                }
           });
+
+          (function () {
+               var reveals = document.querySelectorAll('.reveal');
+               if (reveals.length) {
+                    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (reduced || !('IntersectionObserver' in window)) {
+                         reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+                    } else {
+                         var vh = window.innerHeight;
+                         var toObserve = [];
+                         reveals.forEach(function (el) {
+                              var rect = el.getBoundingClientRect();
+                              if (rect.top < vh * 0.95) {
+                                   el.classList.add('no-anim', 'is-revealed');
+                              } else {
+                                   toObserve.push(el);
+                              }
+                         });
+                         var io = new IntersectionObserver(function (entries) {
+                              entries.forEach(function (entry) {
+                                   if (entry.isIntersecting) {
+                                        entry.target.classList.add('is-revealed');
+                                        io.unobserve(entry.target);
+                                   }
+                              });
+                         }, { rootMargin: '0px 0px -5% 0px' });
+                         toObserve.forEach(function (el) { io.observe(el); });
+                    }
+               }
+
+               var nav = document.querySelector('.navbar-default');
+               if (nav) {
+                    var onScroll = function () {
+                         nav.classList.toggle('is-scrolled', window.scrollY > 8);
+                    };
+                    onScroll();
+                    window.addEventListener('scroll', onScroll, { passive: true });
+               }
+          })();
      </script>
 
 </body>
