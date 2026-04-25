@@ -165,9 +165,10 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
     top: 0;
     z-index: 100;
     background: transparent;
+    will-change: backdrop-filter, background-color;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    padding: 16px 0;
+    padding: 14px 0;
     border: none;
     margin-top: 0;
     transition:
@@ -187,7 +188,10 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
 }
 
 .navbar-default .navbar-brand {
-  padding-top: 6px;
+    padding-top: 15px;   /* centers text within the 50px brand box */
+    padding-left: 0;     /* flush with main content left edge */
+    font-size: 18px;
+    font-weight: 300;
 }
 
 .navbar-default .navbar-nav li a {
@@ -233,11 +237,24 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
   }
 
 .navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus { 
+.navbar-default .navbar-toggle:focus {
   background-color: transparent;
 }
 
-
+/* Desktop: brand left, nav right, both vertically centered */
+@media (min-width: 768px) {
+    .navbar-default > .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .navbar-default .navbar-header { float: none; }
+    .navbar-default .navbar-brand  { float: none; }
+    .navbar-default .navbar-collapse { padding: 0; }
+    .navbar-default .navbar-nav { float: none; }
+    .navbar-default .navbar-nav > li { float: none; display: inline-block; }
+    .navbar-default .navbar-right { float: none; margin-right: 0; }
+}
 
 /*---------------------------------------
    Footer section
@@ -337,29 +354,31 @@ footer .footer-copyright {
    ============================================================ */
 
 :root {
+     --content-max: 72rem;
+
      --ink: #0a0a0a;
      --text: #1a1a1a;
      --text-muted: #6a6a6a;
      --hairline: rgba(0, 0, 0, 0.08);
      --paper: #fafaf8;
 
-     --fs-h1: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
-     --fs-h2: clamp(1.5rem, 1.15rem + 1.6vw, 2.25rem);
-     --fs-label: clamp(0.875rem, 0.83rem + 0.2vw, 1rem);
-     --fs-body: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
-     --fs-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
-     --fs-note: clamp(1rem, 0.95rem + 0.25vw, 1.1875rem);
+     --fs-h1: clamp(1.875rem, 1.25rem + 3.2vw, 3.25rem);
+     --fs-h2: clamp(1.25rem, 1.05rem + 1vw, 1.625rem);
+     --fs-label: clamp(0.6875rem, 0.66rem + 0.15vw, 0.8125rem);
+     --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+     --fs-lede: clamp(0.875rem, 0.86rem + 0.2vw, 0.9375rem);
+     --fs-note: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
 
-     --line-body: 1.65;
-     --line-display: 1.08;
+     --line-body: 1.6;
+     --line-display: 1.1;
 
      --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
      --t-fast: 200ms;
      --t-med: 400ms;
      --t-slow: 700ms;
 
-     --gap-col: clamp(0.75rem, 1.25vw, 1.25rem);
-     --gap-aside: clamp(2rem, 3.5vw, 4rem);
+     --gap-col: clamp(0.5rem, 0.9vw, 0.875rem);
+     --gap-aside: clamp(1.25rem, 2vw, 2.5rem);
 }
 
 /* ---------- Article wrapper + the editorial grid ---------- */
@@ -369,14 +388,14 @@ footer .footer-copyright {
      font-size: var(--fs-body);
      line-height: var(--line-body);
      font-weight: 300;
-     padding: clamp(3rem, 5vw, 6rem) 0 clamp(5rem, 8vw, 9rem);
+     padding: clamp(1.5rem, 2.5vw, 2.5rem) 0 clamp(2.5rem, 4.5vw, 4.5rem);
      display: grid;
      grid-template-columns:
           [full-start] minmax(1.5rem, 1fr)
-          [wide-start] min(calc(100% - 3rem), 100rem)
+          [wide-start] min(calc(100% - 3rem), var(--content-max))
           [wide-end] minmax(1.5rem, 1fr)
           [full-end];
-     row-gap: clamp(3.5rem, 6vw, 6.5rem);
+     row-gap: clamp(1.75rem, 3vw, 3rem);
 }
 
 .project > * { grid-column: wide; }
@@ -388,7 +407,7 @@ footer .footer-copyright {
      line-height: var(--line-display);
      font-weight: 200;
      letter-spacing: -0.02em;
-     margin: 0 0 clamp(1rem, 2vw, 2rem);
+     margin: 0 0 clamp(0.5rem, 1vw, 1rem);
      max-width: 20ch;
 }
 
@@ -397,7 +416,7 @@ footer .footer-copyright {
      line-height: 1.2;
      font-weight: 300;
      letter-spacing: -0.005em;
-     margin: clamp(3rem, 6vw, 6rem) 0 clamp(0.75rem, 1.5vw, 1.25rem);
+     margin: clamp(1.5rem, 3vw, 3rem) 0 clamp(0.4rem, 0.75vw, 0.75rem);
      max-width: 28ch;
 }
 
@@ -412,7 +431,7 @@ footer .footer-copyright {
 
 /* Subsection labels (direct children of .project) get breathing room above */
 .project > h3 {
-     margin: clamp(2rem, 4vw, 4rem) 0 0.25rem;
+     margin: clamp(1rem, 2vw, 2rem) 0 0.25rem;
 }
 
 /* -----------------------------------------------------------
@@ -430,7 +449,7 @@ footer .footer-copyright {
 ------------------------------------------------------------ */
 
 .project p {
-     margin: 0 0 1.4rem;
+     margin: 0 0 0.9rem;
      font-size: var(--fs-body);
      line-height: var(--line-body);
      font-weight: 300;
@@ -448,7 +467,7 @@ footer .footer-copyright {
 }
 
 .project p.subtitle {
-     font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+     font-size: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
      line-height: 1.45;
      font-style: italic;
      color: var(--text-muted);
@@ -467,7 +486,7 @@ footer .footer-copyright {
    content rail while reading paragraphs sit in a slightly inset column.
    Nested paragraphs (inside .prose / figcaption) keep their natural position. */
 .project > p {
-     padding-left: clamp(0rem, 3vw, 3.5rem);
+     padding-left: clamp(0rem, 2vw, 2rem);
 }
 
 .project strong {
@@ -497,11 +516,11 @@ footer .footer-copyright {
 .project .meta {
      display: grid;
      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-     gap: clamp(1.5rem, 3vw, 3rem);
-     padding: clamp(2rem, 4vw, 3.5rem) 0;
+     gap: clamp(1rem, 1.5vw, 1.5rem);
+     padding: clamp(1rem, 2vw, 1.75rem) 0;
      border-top: 1px solid var(--hairline);
      border-bottom: 1px solid var(--hairline);
-     margin: clamp(1rem, 2vw, 2rem) 0;
+     margin: clamp(0.5rem, 1vw, 1rem) 0;
 }
 .project .meta > div > p {
      font-size: var(--fs-body);
@@ -517,7 +536,7 @@ footer .footer-copyright {
 .project hr {
      border: none;
      border-top: 1px solid var(--hairline);
-     margin: clamp(2rem, 4vw, 4rem) 0;
+     margin: clamp(1rem, 2vw, 2rem) 0;
 }
 
 /* ---------- Figure defaults ---------- */
@@ -545,7 +564,7 @@ footer .footer-copyright {
    both look grand at this size). Use .cover.full-bleed for edge-to-edge. */
 .project > figure.cover {
      grid-column: wide;
-     margin-bottom: clamp(1.5rem, 3vw, 3rem);
+     margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 .project > figure.cover.full-bleed {
      grid-column: full;
@@ -806,7 +825,7 @@ footer .footer-copyright {
    ============================================================ */
 
 .rail {
-     width: min(100% - 3rem, 100rem);
+     width: min(100% - 3rem, var(--content-max));
      margin-inline: auto;
 }
 
@@ -815,26 +834,26 @@ footer .footer-copyright {
    Overrides Bootstrap's .container width at all breakpoints. */
 .navbar > .container,
 footer > .container {
-     width: min(100% - 3rem, 100rem);
-     max-width: 100rem;
+     width: min(100% - 3rem, var(--content-max));
+     max-width: var(--content-max);
      padding-left: 0;
      padding-right: 0;
 }
 @media (min-width: 768px) {
      .navbar > .container,
      footer > .container {
-          width: min(100% - 3rem, 100rem);
+          width: min(100% - 3rem, var(--content-max));
      }
 }
 
 /* ---------- Home / intro section ---------- */
 
 .home {
-     padding: clamp(3rem, 5.5vw, 5.5rem) 0 clamp(1.5rem, 3vw, 3rem);
+     padding: clamp(1.5rem, 2.5vw, 2.5rem) 0 clamp(0.75rem, 1.5vw, 1.5rem);
      color: var(--text);
 }
 .home h1 {
-     font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.875rem);
+     font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
      font-weight: 200;
      line-height: 1.18;
      letter-spacing: -0.015em;
@@ -853,12 +872,12 @@ footer > .container {
 /* ---------- Portfolio grid ---------- */
 
 .portfolio {
-     padding: clamp(2rem, 4vw, 4rem) 0 clamp(4rem, 7vw, 7rem);
+     padding: clamp(1rem, 2vw, 2rem) 0 clamp(2rem, 4vw, 4rem);
 }
 .portfolio .grid {
      display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr));
-     gap: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 3vw, 2.5rem);
+     grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+     gap: clamp(1.5rem, 2.5vw, 2.5rem) clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .portfolio article {
@@ -881,7 +900,8 @@ footer > .container {
      height: 100%;
      display: block;
      object-fit: cover;
-     transition: transform var(--t-slow) var(--ease-out);
+     will-change: transform;
+     transition: transform 350ms var(--ease-out);
 }
 .portfolio article a:hover figure img {
      transform: scale(1.035);
@@ -891,7 +911,7 @@ footer > .container {
 }
 .portfolio article h2 {
      font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
-     font-weight: 400;
+     font-weight: 300;
      letter-spacing: -0.005em;
      line-height: 1.25;
      margin: 0 0 0.2rem;
@@ -914,13 +934,13 @@ footer > .container {
 
 .reveal {
      opacity: 0;
-     transform: translateY(16px);
-     transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-     will-change: opacity, transform;
+     transform: translateY(12px);
+     transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 .reveal.is-revealed {
      opacity: 1;
      transform: translateY(0);
+     will-change: auto;
 }
 /* Items already in the viewport at page load skip the animation entirely —
    prevents the hero-while-decoding jank. */
@@ -934,4 +954,21 @@ footer > .container {
           transform: none;
           transition: none;
      }
+}
+
+
+/* ============================================================
+   PAGE TRANSITIONS  (View Transitions API — Chrome 126+, Safari 18.4+)
+   Gives a smooth cross-fade when navigating between pages.
+   Falls back to instant navigation on unsupported browsers.
+   ============================================================ */
+
+@view-transition {
+     navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+     animation-duration: 0.28s;
+     animation-timing-function: ease-out;
 }

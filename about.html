@@ -19,6 +19,16 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
+     <style>
+          /* Scale rem-based typography and spacing to 90% on this page.
+             The p5.js canvas uses pixel dimensions set in JS, so it is unaffected. */
+          html { font-size: 90%; }
+          /* Restore content rail to the same pixel width as all other pages.
+             80rem × 14.4px (90% root) = 1152px = 72rem × 16px (normal root). */
+          :root { --content-max: 80rem; }
+          article.project h1 { font-size: calc(var(--fs-h1) * 0.8); }
+     </style>
+
      <script src="js/about/p5.js"></script>
      <script src="js/about/p5.dom.min.js"></script>
      <script src="js/about/p5.sound.min.js"></script>
