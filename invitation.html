@@ -174,8 +174,15 @@
 
      <script>
           document.addEventListener('click', function (e) {
+               var col = document.querySelector('.navbar-collapse');
+               var nav = document.querySelector('.navbar-default');
                if (e.target.closest('.navbar-toggle')) {
-                    document.querySelector('.navbar-collapse').classList.toggle('in');
+                    var open = !col.classList.contains('in');
+                    col.classList.toggle('in');
+                    if (nav) nav.classList.toggle('nav-open', open);
+               } else if (!e.target.closest('.navbar-default') && col && col.classList.contains('in')) {
+                    col.classList.remove('in');
+                    if (nav) nav.classList.remove('nav-open');
                }
           });
 
@@ -203,7 +210,7 @@
                                         io.unobserve(entry.target);
                                    }
                               });
-                         }, { rootMargin: '0px 0px -5% 0px' });
+                         }, { rootMargin: '0px 0px 0px 0px' });
                          toObserve.forEach(function (el) { io.observe(el); });
                     }
                }

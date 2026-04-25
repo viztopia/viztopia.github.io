@@ -1,99 +1,75 @@
 
-let startImgIndex = 24;
-let imgCount = 1415;
-let imgArray = [];
-
+let imgArray = [];   // grows as images finish loading
 let startPlaying = false;
+let totalExpected = 0;
 let c;
 
+const CANVAS_W   = 600;
+const CANVAS_H   = 338;
+const PLAY_AFTER = 60;   // show sketch after this many images are ready
+
 function setup() {
-  c = createCanvas(600, 338);
-  c.parent("canvasContainer");
-  loadJSON('js/about/wave600.json', replaceImgArray);
+  c = createCanvas(CANVAS_W, CANVAS_H);
+  c.parent('canvasContainer');
   pixelDensity(1);
   noStroke();
+  loadJSON('js/about/wave600.json', onDataLoaded);
 }
 
-function modelReady() {
-  select('#status').html('Model Loaded');
-}
+function onDataLoaded(data) {
+  // Sort by distance from canvas centre so the most central images load first.
+  // imgArray is populated progressively as each image finishes loading.
+  let items = data.slice().sort(function(a, b) {
+    return dist(a.x, a.y, CANVAS_W / 2, CANVAS_H / 2)
+         - dist(b.x, b.y, CANVAS_W / 2, CANVAS_H / 2);
+  });
 
-function imgLoad() {
+  totalExpected = items.length;
+
+  items.forEach(function(item) {
+    var el = createImg(item.name, function() {
+      el.size(CANVAS_W, CANVAS_H);
+      el.hide();
+      item.img = el;
+      imgArray.push(item);
+      if (imgArray.length === PLAY_AFTER) startPlaying = true;
+    });
+  });
 }
 
 function draw() {
-  // background(255, 0, 255);
-
-  if (startPlaying) {
-
-    // imgArray.forEach(img => {
-    //   if (dist(img.x, img.y, mouseX, mouseY) <= 5) {
-    //     image(img.img, 0, 0, 600, 338);
-    //     console.log(mouseX, mouseY);
-    //     return;
-    //   } else {
-
-    //   }
-    // })
-
-    let minImg = imgArray[0];
-    let minDist = dist(minImg.x, minImg.y, mouseX, mouseY);
-    imgArray.forEach(img => {
-      let currentDist = dist(img.x, img.y, mouseX, mouseY);
-      if (currentDist < minDist) {
-        minImg = img;
-        minDist = currentDist;
-      }
-    })
-    image(minImg.img, 0, 0, 600, 338);
-    //     console.log(mouseX, mouseY);
-    // text("Loading YGs...", width / 2 - 50, height / 2);
-
-  } else {
+  if (!startPlaying) {
     background(255);
-    text("Loading YGs...", width / 2 - 50, height / 2);
-    // image(imgArray[0].img, 0, 0, 600, 338);
+    fill(180);
+    noStroke();
+    textSize(13);
+    var pct = totalExpected ? floor(imgArray.length / totalExpected * 100) : 0;
+    text('Loading ' + pct + '%', CANVAS_W / 2 - 32, CANVAS_H / 2);
+    return;
   }
-}
 
-function replaceImgArray(imgs) {
-  imgArray = [];
-  let keys = Object.keys(imgs);
-  keys.forEach(k => {
-    let newImgName = imgs[k].name;
-
-    let newImg = createImg(newImgName, imgLoad);
-    newImg.size(600, 338);
-    newImg.hide();
-    imgs[k].img = newImg;
-
-    imgArray.push(imgs[k]);
-  })
-  console.log("loaded YGs!");
-  // console.log(imgArray);
-  startPlaying = true;
+  // Find the item whose recorded position is closest to the cursor
+  var minItem = imgArray[0];
+  var minD    = dist(minItem.x, minItem.y, mouseX, mouseY);
+  for (var i = 1; i < imgArray.length; i++) {
+    var d = dist(imgArray[i].x, imgArray[i].y, mouseX, mouseY);
+    if (d < minD) { minItem = imgArray[i]; minD = d; }
+  }
+  image(minItem.img, 0, 0, CANVAS_W, CANVAS_H);
 }
 
 function keyPressed() {
-  if (key == 'p') {
-    console.log("start playing!");
-    startPlaying = true;
-  } else if (key == 's') {
-    console.log("saved json!");
-    let jsonArray = [];
-    imgArray.forEach(img => {
-      let obj = {};
-      obj.name = img.name;
-      obj.x = img.x;
-      obj.y = img.y;
-      jsonArray.push(obj);
-    })
-    saveJSON(jsonArray, 'wave600.json');
-  } else if (key == 'l') {
-    loadJSON('wave600.json', replaceImgArray);
+  if (key === 's') {
+    var out = imgArray.map(function(item) {
+      return { name: item.name, x: item.x, y: item.y };
+    });
+    saveJSON(out, 'wave600.json');
+  } else if (key === 'l') {
+    imgArray = [];
+    startPlaying = false;
+    loadJSON('js/about/wave600.json', onDataLoaded);
   }
 }
-
 
 function mousePressed() {
   console.log(mouseX, mouseY);

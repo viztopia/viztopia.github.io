@@ -1,10 +1,15 @@
 
+html {
+    overscroll-behavior-y: none;
+}
+
 body {
 		background: #ffffff;
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
 		font-weight: 300;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
 }
 
 
@@ -144,7 +149,8 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
 @media (max-width: 767px) {
     .navbar-header { float: none; }
     .navbar-toggle { display: block; }
-    .navbar-collapse { padding: 0 15px; max-height: 340px; overflow-y: auto; }
+    /* Overlay panel: always in DOM, shown via opacity/visibility not display */
+    .navbar-collapse { display: block !important; }
     .navbar-nav { float: none; margin: 4px 0; }
     .navbar-nav > li { float: none; }
     .navbar-right { float: none !important; margin-right: 0; }
@@ -165,7 +171,6 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
     top: 0;
     z-index: 100;
     background: transparent;
-    will-change: backdrop-filter, background-color;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     padding: 14px 0;
@@ -192,6 +197,7 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
     padding-left: 0;     /* flush with main content left edge */
     font-size: 18px;
     font-weight: 300;
+    color: var(--ink);
 }
 
 .navbar-default .navbar-nav li a {
@@ -232,7 +238,7 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
   }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background: #bdc3c7;
+    background: #888;
     border-color: transparent;
   }
 
@@ -254,6 +260,67 @@ footer [class*="col-"] { flex: 1; min-width: 180px; }
     .navbar-default .navbar-nav { float: none; }
     .navbar-default .navbar-nav > li { float: none; display: inline-block; }
     .navbar-default .navbar-right { float: none; margin-right: 0; }
+}
+
+/* Mobile: fixed overlay panel — does not push content down */
+@media (max-width: 767px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 78px;   /* navbar: 14px padding + 50px brand height + 14px padding */
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: rgba(255, 255, 255, 0.98);
+        -webkit-backdrop-filter: blur(16px) saturate(1.2);
+        backdrop-filter: blur(16px) saturate(1.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        padding: 0 1.5rem 1.5rem;
+        /* Hidden state: invisible but still in layout (position:fixed so no flow impact) */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+        max-height: none;
+        overflow: visible;
+    }
+    .navbar-collapse.in {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity 0.2s ease, transform 0.22s ease;
+    }
+
+    /* Nav items — full-width, 48 px-ish tap targets, left-aligned */
+    .navbar-default .navbar-nav > li > a {
+        display: block;
+        padding: 0.9rem 0;
+        font-size: 16px;
+        text-align: left;
+        letter-spacing: 0.5px;
+        color: var(--ink) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .navbar-default .navbar-nav > li:last-child > a {
+        border-bottom: none;
+    }
+
+    /* Hamburger bars → X when nav-open */
+    .navbar-toggle .icon-bar {
+        transition: transform 0.22s ease, opacity 0.18s ease;
+        transform-origin: center;
+    }
+    .navbar-default.nav-open .navbar-toggle .icon-bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    .navbar-default.nav-open .navbar-toggle .icon-bar:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    .navbar-default.nav-open .navbar-toggle .icon-bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
 }
 
 /*---------------------------------------
@@ -333,11 +400,6 @@ footer .footer-copyright {
 
   h3 {
     font-size: 22px;
-  }
-
-  .navbar-default {
-    margin-top: 0px;
-    text-align: center;
   }
 
   footer {

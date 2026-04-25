@@ -58,7 +58,7 @@
                     <div class="col-md-offset-1 col-md-10 col-sm-12">
                          <h1>ml5.js</h1>
                          <div class="col-md-12 col-sm-12">
-                              <img src="images/invitation/cover.jpeg" class="img-responsive" alt="Portfolio">
+                              <img fetchpriority="high" src="images/invitation/cover.jpeg" class="img-responsive" alt="Portfolio">
                          </div>
 
                          <div class="clearfix col-md-12 col-sm-12">
@@ -207,8 +207,15 @@
 
      <script>
           document.addEventListener('click', function (e) {
+               var col = document.querySelector('.navbar-collapse');
+               var nav = document.querySelector('.navbar-default');
                if (e.target.closest('.navbar-toggle')) {
-                    document.querySelector('.navbar-collapse').classList.toggle('in');
+                    var open = !col.classList.contains('in');
+                    col.classList.toggle('in');
+                    if (nav) nav.classList.toggle('nav-open', open);
+               } else if (!e.target.closest('.navbar-default') && col && col.classList.contains('in')) {
+                    col.classList.remove('in');
+                    if (nav) nav.classList.remove('nav-open');
                }
           });
      </script>

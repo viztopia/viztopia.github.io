@@ -20,13 +20,22 @@
      <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
      <style>
-          /* Scale rem-based typography and spacing to 90% on this page.
-             The p5.js canvas uses pixel dimensions set in JS, so it is unaffected. */
+          /* Scale rem-based typography and spacing to 90% on this page. */
           html { font-size: 90%; }
           /* Restore content rail to the same pixel width as all other pages.
              80rem × 14.4px (90% root) = 1152px = 72rem × 16px (normal root). */
           :root { --content-max: 80rem; }
           article.project h1 { font-size: calc(var(--fs-h1) * 0.8); }
+
+          /* Responsive canvas: scale down when the container is narrower than 600px.
+             p5.js writes inline width/height styles so !important is required.
+             p5 internally scales mouseX/mouseY by canvas.width/clientWidth so the
+             wave600.json coordinate lookup stays correct at any visual size. */
+          #canvasContainer canvas {
+               max-width: 100% !important;
+               height: auto !important;
+               display: block;
+          }
      </style>
 
      <script src="js/about/p5.js"></script>
@@ -417,8 +426,15 @@
 
      <script>
           document.addEventListener('click', function (e) {
+               var col = document.querySelector('.navbar-collapse');
+               var nav = document.querySelector('.navbar-default');
                if (e.target.closest('.navbar-toggle')) {
-                    document.querySelector('.navbar-collapse').classList.toggle('in');
+                    var open = !col.classList.contains('in');
+                    col.classList.toggle('in');
+                    if (nav) nav.classList.toggle('nav-open', open);
+               } else if (!e.target.closest('.navbar-default') && col && col.classList.contains('in')) {
+                    col.classList.remove('in');
+                    if (nav) nav.classList.remove('nav-open');
                }
           });
 
